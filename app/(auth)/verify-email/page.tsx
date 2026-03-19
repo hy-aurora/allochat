@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { Icon } from '@iconify/react';
 
 const OTP_LENGTH = 6;
 
@@ -80,7 +81,7 @@ export default function VerifyEmailPage() {
     <div className="flex flex-col items-center gap-6">
       <div className="flex flex-col items-center gap-2 text-center">
         <div className="flex size-16 items-center justify-center rounded-full bg-blue-100 text-3xl dark:bg-blue-900">
-          ✉️
+          <Icon icon="solar:letter-unread-linear" className="size-8 text-blue-700 dark:text-blue-200" />
         </div>
         <h2 className="text-2xl font-bold">Check your inbox</h2>
         <p className="text-muted-foreground text-sm">

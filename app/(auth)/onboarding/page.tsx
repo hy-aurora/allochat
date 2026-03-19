@@ -9,6 +9,7 @@ import { toast } from 'sonner';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { Icon } from '@iconify/react';
 
 const STEPS = ['Profile', 'Interests', 'Room', 'Done'] as const;
 type Step = (typeof STEPS)[number];
@@ -18,6 +19,13 @@ const INTERESTS = [
   'Movies', 'Travel', 'Food', 'Tech', 'Science', 'Fashion',
   'Reading', 'Fitness', 'Photography', 'Crypto',
 ];
+
+const SUGGESTED_ROOMS = [
+  { label: 'Gaming', icon: 'solar:gamepad-linear' },
+  { label: 'Music', icon: 'solar:music-note-linear' },
+  { label: 'Coding', icon: 'solar:code-linear' },
+  { label: 'Language', icon: 'solar:global-linear' },
+] as const;
 
 export default function OnboardingPage() {
   const router = useRouter();
@@ -41,7 +49,7 @@ export default function OnboardingPage() {
     setLoading(true);
     try {
       // Profile mutation will be available after schema deploy
-      toast.success('Welcome to AlloChat! 🎉');
+      toast.success('Welcome to AlloChat!');
       router.push('/lobby');
     } catch {
       toast.error('Something went wrong. Please try again.');
@@ -81,7 +89,7 @@ export default function OnboardingPage() {
         <div className="flex flex-col gap-4">
           <div className="flex flex-col items-center gap-3">
             <div className="bg-muted flex size-24 cursor-pointer items-center justify-center rounded-full text-4xl hover:opacity-80">
-              😊
+              <Icon icon="solar:user-circle-linear" className="size-12 text-muted-foreground" />
             </div>
             <p className="text-muted-foreground text-xs">Click to upload avatar (coming soon)</p>
           </div>
@@ -175,9 +183,10 @@ export default function OnboardingPage() {
             </p>
           </div>
           <div className="grid grid-cols-2 gap-3">
-            {['🎮 Gaming', '🎵 Music', '💻 Coding', '🌍 Language'].map((cat) => (
-              <div key={cat} className="border-border rounded-xl border p-3 text-sm font-medium">
-                {cat}
+            {SUGGESTED_ROOMS.map((cat) => (
+              <div key={cat.label} className="border-border flex items-center gap-2 rounded-xl border p-3 text-sm font-medium">
+                <Icon icon={cat.icon} className="size-4 text-muted-foreground" />
+                {cat.label}
               </div>
             ))}
           </div>
@@ -191,7 +200,7 @@ export default function OnboardingPage() {
       {/* Step: Done */}
       {step === 'Done' && (
         <div className="flex flex-col items-center gap-5 text-center">
-          <div className="animate-bounce text-6xl">🎉</div>
+          <Icon icon="solar:check-circle-linear" className="animate-bounce size-14 text-primary" />
           <div>
             <h3 className="text-xl font-bold">You&apos;re all set!</h3>
             <p className="text-muted-foreground text-sm mt-1">
@@ -199,7 +208,7 @@ export default function OnboardingPage() {
             </p>
           </div>
           <Button className="h-11 w-full font-semibold" onClick={handleFinish} disabled={loading}>
-            {loading ? 'Loading…' : 'Enter AlloChat 🚀'}
+            {loading ? 'Loading…' : 'Enter AlloChat'}
           </Button>
         </div>
       )}

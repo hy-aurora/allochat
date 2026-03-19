@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
+import { Icon } from '@iconify/react';
 
 export const metadata: Metadata = { title: 'Sign Up' };
 
@@ -42,10 +42,12 @@ export default function SignUpPage() {
 
       <div className="flex flex-col gap-3">
         <Link href="/sign-up/email" className="bg-primary text-primary-foreground hover:bg-primary/90 inline-flex h-11 w-full items-center justify-center gap-2 rounded-4xl px-3 text-sm font-medium transition-colors">
-          ✉️ Sign up with Email
+          <Icon icon="solar:letter-linear" className="size-4" />
+          Sign up with Email
         </Link>
         <Link href="/sign-up/phone" className="bg-secondary text-secondary-foreground hover:bg-secondary/90 inline-flex h-11 w-full items-center justify-center gap-2 rounded-4xl px-3 text-sm font-medium transition-colors">
-          📱 Sign up with Phone
+          <Icon icon="solar:smartphone-2-linear" className="size-4" />
+          Sign up with Phone
         </Link>
       </div>
 

@@ -10,6 +10,7 @@ import { toast } from 'sonner';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { Icon } from '@iconify/react';
 
 const schema = z.object({ email: z.string().email('Invalid email address') });
 type FormData = z.infer<typeof schema>;
@@ -38,7 +39,9 @@ export default function ForgotPasswordPage() {
   if (sent) {
     return (
       <div className="flex flex-col items-center gap-4 text-center">
-        <div className="flex size-16 items-center justify-center rounded-full bg-green-100 text-3xl dark:bg-green-900">✅</div>
+        <div className="flex size-16 items-center justify-center rounded-full bg-green-100 text-3xl dark:bg-green-900">
+          <Icon icon="solar:check-circle-linear" className="size-8 text-green-700 dark:text-green-200" />
+        </div>
         <h2 className="text-2xl font-bold">Check your email</h2>
         <p className="text-muted-foreground text-sm">
           If that email exists, we&apos;ve sent a password reset link. Check your inbox and spam folder.

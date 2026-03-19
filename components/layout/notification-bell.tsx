@@ -54,7 +54,7 @@ export function NotificationBell() {
           
           {notifications?.length === 0 && (
             <div className="flex h-[300px] flex-col items-center justify-center gap-2 p-6 text-center italic">
-              <span className="text-4xl text-muted-foreground/30">💤</span>
+              <Icon icon="solar:bell-linear" className="text-muted-foreground/30 size-10" />
               <p className="text-muted-foreground text-xs font-medium">All caught up! No unread notifications.</p>
             </div>
           )}

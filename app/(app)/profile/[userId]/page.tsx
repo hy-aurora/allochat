@@ -11,6 +11,7 @@ import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
+import { Icon } from '@iconify/react';
 
 export default function UserProfilePage() {
   const params = useParams();
@@ -30,7 +31,9 @@ export default function UserProfilePage() {
         <div className="absolute -bottom-16 left-8 flex items-end gap-6">
           <Avatar className="size-32 border-4 border-background shadow-lg">
             <AvatarImage src={user.avatar} />
-            <AvatarFallback className="text-4xl text-foreground">😊</AvatarFallback>
+            <AvatarFallback>
+              <Icon icon="solar:user-circle-linear" className="size-12 text-muted-foreground" />
+            </AvatarFallback>
           </Avatar>
           <div className="mb-4 flex flex-col gap-1">
             <h1 className="text-2xl font-bold">{user.displayName}</h1>
@@ -60,7 +63,7 @@ export default function UserProfilePage() {
             </CardHeader>
             <CardContent className="flex flex-col gap-4">
               <p className="text-foreground leading-relaxed italic whitespace-pre-wrap">
-                {user.bio || "No bio yet. This user is a mystery! 🕵️"}
+                {user.bio || 'No bio yet. This user is a mystery.'}
               </p>
               
               <Separator className="bg-border/30" />
@@ -125,7 +128,10 @@ export default function UserProfilePage() {
               </div>
               <p className="text-muted-foreground text-center text-xs italic">
                 {/* Math for XP to next level here */}
-                🚀 240 XP to next level
+                <span className="inline-flex items-center gap-1">
+                  <Icon icon="solar:rocket-2-linear" className="size-3.5" />
+                  240 XP to next level
+                </span>
               </p>
             </CardContent>
           </Card>
@@ -136,9 +142,15 @@ export default function UserProfilePage() {
             </CardHeader>
             <CardContent className="flex flex-wrap gap-3">
               {/* Badge placeholder */}
-              <div className="bg-muted flex size-12 items-center justify-center rounded-xl text-2xl grayscale transition-all hover:grayscale-0" title="AlloChat Veteran">🌟</div>
-              <div className="bg-muted flex size-12 items-center justify-center rounded-xl text-2xl grayscale transition-all hover:grayscale-0" title="Early Adopter">🚀</div>
-              <div className="bg-muted flex size-12 items-center justify-center rounded-xl text-2xl grayscale transition-all hover:grayscale-0" title="Top Chatter">🔥</div>
+              <div className="bg-muted flex size-12 items-center justify-center rounded-xl grayscale transition-all hover:grayscale-0" title="AlloChat Veteran">
+                <Icon icon="solar:star-bold" className="size-5 text-amber-500" />
+              </div>
+              <div className="bg-muted flex size-12 items-center justify-center rounded-xl grayscale transition-all hover:grayscale-0" title="Early Adopter">
+                <Icon icon="solar:rocket-2-bold" className="size-5 text-sky-500" />
+              </div>
+              <div className="bg-muted flex size-12 items-center justify-center rounded-xl grayscale transition-all hover:grayscale-0" title="Top Chatter">
+                <Icon icon="solar:fire-bold" className="size-5 text-orange-500" />
+              </div>
             </CardContent>
           </Card>
         </div>

@@ -12,6 +12,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Separator } from '@/components/ui/separator';
+import { Icon } from '@iconify/react';
 
 export default function ProfileSettingsPage() {
   const user = useQuery(api.users.getCurrentUser);
@@ -34,7 +35,7 @@ export default function ProfileSettingsPage() {
     setSaving(true);
     try {
       await updateProfile({ displayName, bio, username });
-      toast.success('Profile updated successfully! ✨');
+      toast.success('Profile updated successfully.');
     } catch (err) {
       toast.error('Failed to update profile.');
     } finally {
@@ -54,10 +55,22 @@ export default function ProfileSettingsPage() {
 
       <Tabs defaultValue="profile" className="flex flex-col gap-6 md:flex-row">
         <TabsList className="bg-muted/50 flex h-auto flex-col justify-start rounded-xl p-1 md:w-48">
-          <TabsTrigger value="profile" className="justify-start px-4 py-2 text-left">👤 Profile</TabsTrigger>
-          <TabsTrigger value="appearance" className="justify-start px-4 py-2 text-left">🎨 Appearance</TabsTrigger>
-          <TabsTrigger value="account" className="justify-start px-4 py-2 text-left">🛡️ Account</TabsTrigger>
-          <TabsTrigger value="notifications" className="justify-start px-4 py-2 text-left">🔔 Notifications</TabsTrigger>
+          <TabsTrigger value="profile" className="justify-start gap-2 px-4 py-2 text-left">
+            <Icon icon="solar:user-linear" className="size-4" />
+            Profile
+          </TabsTrigger>
+          <TabsTrigger value="appearance" className="justify-start gap-2 px-4 py-2 text-left">
+            <Icon icon="solar:pallete-2-linear" className="size-4" />
+            Appearance
+          </TabsTrigger>
+          <TabsTrigger value="account" className="justify-start gap-2 px-4 py-2 text-left">
+            <Icon icon="solar:shield-user-linear" className="size-4" />
+            Account
+          </TabsTrigger>
+          <TabsTrigger value="notifications" className="justify-start gap-2 px-4 py-2 text-left">
+            <Icon icon="solar:bell-linear" className="size-4" />
+            Notifications
+          </TabsTrigger>
         </TabsList>
 
         <div className="flex-1">
@@ -72,7 +85,9 @@ export default function ProfileSettingsPage() {
                 <div className="flex items-center gap-4">
                   <Avatar className="size-20 border-2 border-primary/20">
                     <AvatarImage src={user.avatar} />
-                    <AvatarFallback className="text-xl">😊</AvatarFallback>
+                    <AvatarFallback>
+                      <Icon icon="solar:user-circle-linear" className="size-8 text-muted-foreground" />
+                    </AvatarFallback>
                   </Avatar>
                   <div className="flex flex-col gap-2">
                     <Button variant="outline" size="sm">Change Avatar</Button>
@@ -143,7 +158,8 @@ export default function ProfileSettingsPage() {
                     <p className="text-muted-foreground text-xs italic">Switch between light and dark themes</p>
                   </div>
                   <Button variant="outline" size="sm" onClick={() => {/* Toggle theme logic */}}>
-                    🌙 Dark
+                    <Icon icon="solar:moon-stars-linear" className="size-4" />
+                    Dark
                   </Button>
                 </div>
               </CardContent>

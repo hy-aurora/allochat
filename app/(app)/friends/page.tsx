@@ -11,6 +11,7 @@ import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
+import { Icon } from '@iconify/react';
 
 export default function FriendsPage() {
   const friends = useQuery(api.users.getFriends);
@@ -23,7 +24,7 @@ export default function FriendsPage() {
   async function handleAccept(requestId: any) {
     try {
       await acceptRequest({ requestId });
-      toast.success('Friend request accepted! 🤝');
+      toast.success('Friend request accepted.');
     } catch {
       toast.error('Failed to accept request.');
     }
@@ -44,7 +45,7 @@ export default function FriendsPage() {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
            />
-           <span className="text-muted-foreground absolute top-1/2 left-3 -translate-y-1/2 text-xs">🔍</span>
+           <Icon icon="solar:magnifer-linear" className="text-muted-foreground absolute top-1/2 left-3 size-3.5 -translate-y-1/2" />
         </div>
       </div>
 
@@ -56,7 +57,10 @@ export default function FriendsPage() {
           <TabsTrigger value="requests" className="rounded-lg px-6">
             Requests {requests?.length ? <Badge variant="secondary" className="ml-2 bg-red-100 text-red-600 dark:bg-red-900">{requests.length}</Badge> : ''}
           </TabsTrigger>
-          <TabsTrigger value="find" className="rounded-lg px-6">🔍 Find People</TabsTrigger>
+          <TabsTrigger value="find" className="rounded-lg px-6">
+            <Icon icon="solar:magnifer-linear" className="size-4" />
+            Find People
+          </TabsTrigger>
         </TabsList>
 
         <TabsContent value="friends" className="mt-0">
@@ -64,7 +68,7 @@ export default function FriendsPage() {
             {!friends && [...Array(4)].map((_, i) => <div key={i} className="bg-muted h-20 animate-pulse rounded-xl" />)}
             {friends?.length === 0 && (
               <div className="bg-muted/20 sm:col-span-2 flex flex-col items-center justify-center gap-2 rounded-2xl py-16 text-center italic">
-                <span className="text-4xl text-muted-foreground">🏜️</span>
+                <Icon icon="solar:users-group-rounded-linear" className="text-muted-foreground size-10" />
                 <p className="text-muted-foreground text-sm font-medium">No friends yet. Time to socialize!</p>
                 <Button variant="outline" className="mt-2 text-xs">Browse Rooms</Button>
               </div>
@@ -85,7 +89,9 @@ export default function FriendsPage() {
             {requests?.map((req: any) => (
               <div key={req._id} className="border-border bg-card flex items-center gap-4 rounded-xl border p-4 shadow-sm transition-all hover:shadow-md">
                 <Avatar className="size-10 border border-primary/10 shadow-inner">
-                  <AvatarFallback className="text-base">👤</AvatarFallback>
+                  <AvatarFallback>
+                    <Icon icon="solar:user-linear" className="size-5 text-muted-foreground" />
+                  </AvatarFallback>
                 </Avatar>
                 <div className="flex-1">
                   <p className="text-foreground text-sm font-bold">User {req.requesterId.slice(0, 8)}</p>
@@ -112,7 +118,7 @@ export default function FriendsPage() {
                 <Button>Search</Button>
               </div>
               <p className="text-muted-foreground mt-4 text-center text-xs italic">
-                You can also find people by chatting in public rooms! 💬
+                You can also find people by chatting in public rooms.
               </p>
             </CardContent>
           </Card>
@@ -127,7 +133,9 @@ function FriendCard({ friend }: { friend: any }) {
     <div className="border-border bg-card group flex items-center gap-4 rounded-xl border p-4 shadow-sm transition-all hover:border-primary/30 hover:shadow-md">
       <div className="relative">
         <Avatar className="size-12 border-2 border-primary/20 shadow-inner">
-          <AvatarFallback className="text-lg">😊</AvatarFallback>
+          <AvatarFallback>
+            <Icon icon="solar:user-circle-linear" className="size-6 text-muted-foreground" />
+          </AvatarFallback>
         </Avatar>
         <div className="bg-green-500 absolute -right-0.5 -bottom-0.5 size-3 rounded-full border-2 border-background shadow-sm" />
       </div>

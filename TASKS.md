@@ -130,6 +130,7 @@
 - [ ] Create `components/CommandPalette.tsx`
 - [ ] Filter nav items by user permissions
 - [ ] Mobile responsive navigation (hamburger menu)
+- [x] Replace secondary-screen emoji-only system labels with `@iconify/react` icons
 
 ### Theming
 - [ ] Set up dark mode toggle

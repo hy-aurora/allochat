@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
+import { Icon } from '@iconify/react';
 
 export const metadata: Metadata = { title: 'Sign In' };
 
@@ -54,10 +54,12 @@ export default function SignInPage() {
       {/* Email & Phone */}
       <div className="flex flex-col gap-3">
         <Link href="/sign-in/email" className="bg-primary text-primary-foreground hover:bg-primary/90 inline-flex h-11 w-full items-center justify-center gap-2 rounded-4xl px-3 text-sm font-medium transition-colors">
-          ✉️ Sign in with Email
+          <Icon icon="solar:letter-linear" className="size-4" />
+          Sign in with Email
         </Link>
         <Link href="/sign-in/phone" className="bg-secondary text-secondary-foreground hover:bg-secondary/90 inline-flex h-11 w-full items-center justify-center gap-2 rounded-4xl px-3 text-sm font-medium transition-colors">
-          📱 Sign in with Phone
+          <Icon icon="solar:smartphone-2-linear" className="size-4" />
+          Sign in with Phone
         </Link>
       </div>
 

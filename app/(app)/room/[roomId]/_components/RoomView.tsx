@@ -40,7 +40,7 @@ export function RoomView({ roomId }: Props) {
   if (room === null) {
     return (
       <div className="flex h-full flex-col items-center justify-center gap-3">
-        <span className="text-5xl">🏚️</span>
+        <Icon icon="solar:danger-triangle-linear" className="text-muted-foreground size-10" />
         <h2 className="text-xl font-bold">Room not found</h2>
         <p className="text-muted-foreground text-sm">This room might have been deleted.</p>
       </div>
@@ -54,7 +54,7 @@ export function RoomView({ roomId }: Props) {
         {/* Room Header */}
         <div className="border-border bg-card/50 flex items-center gap-3 border-b px-6 py-4 backdrop-blur-md">
           <div className="bg-primary/10 flex size-10 items-center justify-center rounded-xl text-2xl shadow-inner">
-            {room.icon || '💬'}
+            {room.icon || <Icon icon="solar:chat-round-line-linear" className="size-5 text-primary" />}
           </div>
           <div className="flex min-w-0 flex-1 flex-col">
             <div className="flex items-center gap-2">
