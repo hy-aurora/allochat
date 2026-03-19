@@ -175,3 +175,43 @@ export const blockUser = mutation({
     return null;
   },
 });
+
+export const checkUsernameAvailability = query({
+  args: { username: v.string() },
+  handler: async (ctx, args) => {
+    const existing = await ctx.db
+      .query('users')
+      .withIndex('byUsername', (q) => q.eq('username', args.username.toLowerCase()))
+      .unique();
+    return !existing;
+  },
+});
+
+export const generateUniqueUsername = mutation({
+  args: { base: v.string() },
+  handler: async (ctx, args) => {
+    let base = args.base.toLowerCase().replace(/[^a-z0-9]/g, '');
+    if (base.length < 3) base = 'user' + base;
+    if (base.length === 0) base = 'user';
+
+    let isAvailable = false;
+    let finalUsername = base;
+    let counter = 1;
+
+    while (!isAvailable) {
+      const existing = await ctx.db
+        .query('users')
+        .withIndex('byUsername', (q) => q.eq('username', finalUsername))
+        .unique();
+
+      if (!existing) {
+        isAvailable = true;
+      } else {
+        finalUsername = `${base}${counter}`;
+        counter++;
+      }
+    }
+
+    return finalUsername;
+  },
+});

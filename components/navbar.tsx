@@ -4,18 +4,27 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Icon } from "@iconify/react";
+import { useConvexAuth } from "convex/react";
+import { useAuthActions } from "@convex-dev/auth/react";
 import { nav, siteConfig } from "@/app/data/home";
 import { cn } from "@/lib/utils";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const { isAuthenticated, isLoading } = useConvexAuth();
+  const { signOut } = useAuthActions();
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handler, { passive: true });
     return () => window.removeEventListener("scroll", handler);
   }, []);
+
+  const handleSignOut = async () => {
+    await signOut();
+    window.location.href = "/";
+  };
 
   return (
     <header
@@ -52,19 +61,40 @@ export function Navbar() {
 
         {/* Desktop CTA */}
         <div className="hidden items-center gap-3 md:flex">
-          <Link
-            href="/sign-in"
-            className="rounded-lg px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-          >
-            Sign In
-          </Link>
-          <Link
-            href={nav.cta.href}
-            className="inline-flex h-9 items-center justify-center rounded-full bg-primary px-5 text-sm font-semibold text-primary-foreground shadow-md shadow-primary/20 transition-all hover:scale-105 hover:shadow-primary/40 active:scale-95"
-            data-cursor="hover"
-          >
-            {nav.cta.label}
-          </Link>
+          {!isLoading && (
+             isAuthenticated ? (
+               <>
+                 <Link
+                   href="/lobby"
+                   className="rounded-lg px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+                 >
+                   Go to Lounge
+                 </Link>
+                 <button
+                   onClick={handleSignOut}
+                   className="inline-flex h-9 items-center justify-center rounded-full bg-secondary/50 border border-border/50 px-5 text-sm font-semibold text-foreground transition-all hover:bg-secondary hover:scale-105 active:scale-95"
+                 >
+                   Sign Out
+                 </button>
+               </>
+             ) : (
+               <>
+                 <Link
+                   href="/sign-in"
+                   className="rounded-lg px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+                 >
+                   Sign In
+                 </Link>
+                 <Link
+                   href={nav.cta.href}
+                   className="inline-flex h-9 items-center justify-center rounded-full bg-primary px-5 text-sm font-semibold text-primary-foreground shadow-md shadow-primary/20 transition-all hover:scale-105 hover:shadow-primary/40 active:scale-95"
+                   data-cursor="hover"
+                 >
+                   {nav.cta.label}
+                 </Link>
+               </>
+             )
+          )}
         </div>
 
         {/* Mobile Toggle */}
@@ -99,16 +129,41 @@ export function Navbar() {
                 </Link>
               ))}
               <div className="mt-3 flex flex-col gap-2 border-t border-border/40 pt-3">
-                <Link href="/sign-in" onClick={() => setMenuOpen(false)} className="rounded-lg px-3 py-2.5 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground">
-                  Sign In
-                </Link>
-                <Link
-                  href={nav.cta.href}
-                  onClick={() => setMenuOpen(false)}
-                  className="inline-flex h-10 items-center justify-center rounded-full bg-primary px-5 text-sm font-semibold text-primary-foreground"
-                >
-                  {nav.cta.label}
-                </Link>
+                {!isLoading && (
+                  isAuthenticated ? (
+                    <>
+                      <Link 
+                        href="/lobby" 
+                        onClick={() => setMenuOpen(false)} 
+                        className="rounded-lg px-3 py-2.5 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground"
+                      >
+                        Go to Lounge
+                      </Link>
+                      <button
+                        onClick={() => {
+                          handleSignOut();
+                          setMenuOpen(false);
+                        }}
+                        className="inline-flex h-10 items-center justify-center rounded-full bg-secondary/50 border border-border/50 px-5 text-sm font-semibold text-foreground"
+                      >
+                        Sign Out
+                      </button>
+                    </>
+                  ) : (
+                    <>
+                      <Link href="/sign-in" onClick={() => setMenuOpen(false)} className="rounded-lg px-3 py-2.5 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground">
+                        Sign In
+                      </Link>
+                      <Link
+                        href={nav.cta.href}
+                        onClick={() => setMenuOpen(false)}
+                        className="inline-flex h-10 items-center justify-center rounded-full bg-primary px-5 text-sm font-semibold text-primary-foreground"
+                      >
+                        {nav.cta.label}
+                      </Link>
+                    </>
+                  )
+                )}
               </div>
             </div>
           </motion.div>
