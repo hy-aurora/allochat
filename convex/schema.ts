@@ -43,68 +43,68 @@ export default defineSchema({
     ),
 
     // Presence
-    presenceStatus: v.union(
+    presenceStatus: v.optional(v.union(
       v.literal('online'),
       v.literal('away'),
       v.literal('busy'),
       v.literal('offline')
-    ),
-    lastSeenAt: v.number(),
+    )),
+    lastSeenAt: v.optional(v.number()),
     currentRoomId: v.optional(v.id('rooms')),
 
     // Account Settings
-    theme: v.union(v.literal('light'), v.literal('dark'), v.literal('system')),
-    language: v.string(),
+    theme: v.optional(v.union(v.literal('light'), v.literal('dark'), v.literal('system'))),
+    language: v.optional(v.string()),
 
     // Notification Prefs
-    notifMessages: v.boolean(),
-    notifCalls: v.boolean(),
-    notifMentions: v.boolean(),
-    notifFriends: v.boolean(),
-    notifEmail: v.boolean(),
-    notifSMS: v.boolean(),
+    notifMessages: v.optional(v.boolean()),
+    notifCalls: v.optional(v.boolean()),
+    notifMentions: v.optional(v.boolean()),
+    notifFriends: v.optional(v.boolean()),
+    notifEmail: v.optional(v.boolean()),
+    notifSMS: v.optional(v.boolean()),
 
     // RBAC
-    role: v.union(
+    role: v.optional(v.union(
       v.literal('owner'),
       v.literal('admin'),
       v.literal('moderator'),
       v.literal('staff'),
       v.literal('user'),
       v.literal('guest')
-    ),
-    subscriptionTier: v.union(
+    )),
+    subscriptionTier: v.optional(v.union(
       v.literal('free'),
       v.literal('premium'),
       v.literal('pro'),
       v.literal('elite')
-    ),
+    )),
 
     // Gamification (denormalized)
-    xp: v.number(),
-    level: v.number(),
-
+    xp: v.optional(v.number()),
+    level: v.optional(v.number()),
+    
     // Verification
-    emailVerified: v.boolean(),
-    phoneVerified: v.boolean(),
-    isVerified: v.boolean(),
+    emailVerified: v.optional(v.boolean()),
+    phoneVerified: v.optional(v.boolean()),
+    isVerified: v.optional(v.boolean()),
     verifiedType: v.optional(v.string()),
 
     // Moderation state
-    isBanned: v.boolean(),
+    isBanned: v.optional(v.boolean()),
     banExpiry: v.optional(v.number()),
-    isMuted: v.boolean(),
+    isMuted: v.optional(v.boolean()),
     muteExpiry: v.optional(v.number()),
 
     // Status flags
-    isBot: v.boolean(),
-    isDeleted: v.boolean(),
-    isGuest: v.boolean(),
+    isBot: v.optional(v.boolean()),
+    isDeleted: v.optional(v.boolean()),
+    isGuest: v.optional(v.boolean()),
     minAge: v.optional(v.number()),
-    consentGiven: v.boolean(),
+    consentGiven: v.optional(v.boolean()),
 
-    createdAt: v.number(),
-    updatedAt: v.number(),
+    createdAt: v.optional(v.number()),
+    updatedAt: v.optional(v.number()),
   })
     .index('byUsername', ['username'])
     .index('byEmail', ['email'])

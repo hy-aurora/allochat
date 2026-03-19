@@ -98,7 +98,7 @@ export default function SignInEmailPage() {
           )}
         </div>
 
-        <Button className="h-11 w-full font-semibold" disabled={loading}>
+        <Button type="submit" className="h-11 w-full font-semibold" disabled={loading}>
           {loading ? 'Signing in…' : 'Sign In'}
         </Button>
       </form>
