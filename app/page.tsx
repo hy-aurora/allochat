@@ -7,7 +7,7 @@ export default function Page() {
       <section className="mx-auto flex w-full max-w-6xl flex-col gap-10 px-6 py-12 md:py-20">
         <div className="grid items-center gap-10 md:grid-cols-2">
           <div className="flex flex-col gap-5">
-            <p className="text-primary text-sm font-semibold uppercase tracking-wider">AlloChat v2.0</p>
+            <p className="text-primary text-sm font-semibold uppercase tracking-wider">AlloChat</p>
             <h1 className="text-foreground text-4xl font-bold leading-tight md:text-6xl">
               Real-time chat, rooms, and calls in one place.
             </h1>
@@ -36,7 +36,7 @@ export default function Page() {
         </div>
 
         <div className="text-muted-foreground border-border flex flex-wrap items-center justify-between gap-3 border-t pt-6 text-sm">
-          <span>AlloChat v2.0</span>
+          <span>AlloChat</span>
           <span>Next.js + Convex + Base UI</span>
         </div>
       </section>

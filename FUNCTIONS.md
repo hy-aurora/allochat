@@ -1,6 +1,6 @@
-# AlloChat v2.0 — Complete Feature & Function Breakdown
+# AlloChat — Complete Feature & Function Breakdown
 
-> **Platform**: AlloChat v2.0 (rebranded from CodyChat 9.0)
+> **Platform**: AlloChat (rebranded from CodyChat 9.0)
 > **Stack**: Next.js + Shadcn + Convex + Convex Auth
 > **Status**: Analysis Complete → Active Development
 
@@ -29,7 +29,7 @@
 ## 1. Naming & Nomenclature
 
 ### Product Name
-| Old (CodyChat 9.0) | New (AlloChat v2.0) |
+| Old (CodyChat 9.0) | New (AlloChat) |
 |--------------------|---------------------|
 | CodyChat | **AlloChat** |
 | Boom (internal prefix) | **allo** (internal prefix) |
@@ -92,11 +92,11 @@
 - No emoji reactions
 - Full-text search via MySQL LIKE
 
-### AlloChat v2.0 — Enhanced
+### AlloChat — Enhanced
 **Tech**: Convex real-time subscriptions (WebSocket-native, <100ms latency)
 
 #### Key Improvements
-| Feature | CodyChat | AlloChat v2.0 |
+| Feature | CodyChat | AlloChat |
 |---------|---------|---------------|
 | Real-time transport | 3s AJAX polling | WebSocket (<100ms) |
 | Message editing | ❌ | ✅ With edit history |
@@ -201,10 +201,10 @@ components/chat/
 - VPN detection (via external API)
 - Captcha support (reCAPTCHA)
 
-### AlloChat v2.0 — Enhanced
+### AlloChat — Enhanced
 
 #### Auth Methods
-| Method | CodyChat | AlloChat v2.0 |
+| Method | CodyChat | AlloChat |
 |--------|---------|---------------|
 | Email + password | ✅ (MD5 — weak) | ✅ bcrypt + Convex Auth |
 | Google OAuth | ❌ | ✅ |
@@ -346,7 +346,7 @@ app/(auth)/
 - Room-level addon enable/disable
 - Bridge mode (connect two servers)
 
-### AlloChat v2.0 — Enhanced
+### AlloChat — Enhanced
 
 #### Room Types
 | Type | Description |
@@ -451,7 +451,7 @@ app/(app)/
 - No transcription
 - No screen sharing UI
 
-### AlloChat v2.0 — Enhanced
+### AlloChat — Enhanced
 
 #### Call Infrastructure: LiveKit WebRTC
 ```typescript
@@ -489,7 +489,7 @@ calls: defineTable({
 ```
 
 #### Call Features
-| Feature | CodyChat | AlloChat v2.0 |
+| Feature | CodyChat | AlloChat |
 |---------|---------|---------------|
 | 1-on-1 video | ✅ | ✅ HD 720p+ |
 | 1-on-1 audio | ✅ | ✅ |
@@ -535,7 +535,7 @@ components/calls/
 - User level (if enabled)
 - User wall (public post board)
 
-### AlloChat v2.0 — Enhanced
+### AlloChat — Enhanced
 
 ```typescript
 userProfiles: defineTable({
@@ -606,7 +606,7 @@ presences: defineTable({
 - Currency: Ruby + Gold coins
 - Ruby/Gold earning delays
 
-### AlloChat v2.0 — Enhanced
+### AlloChat — Enhanced
 
 ```typescript
 userXP: defineTable({
@@ -703,7 +703,7 @@ leaderboards: defineTable({
 - File uploads: image, video, audio, zip
 - Color text formatting
 
-### AlloChat v2.0 — Enhanced
+### AlloChat — Enhanced
 
 #### Extended Media Support
 ```typescript
@@ -759,7 +759,7 @@ mediaAttachments: defineTable({
 
 Each addon has: own DB tables, admin UI, room-level toggle, custom PHP components
 
-### AlloChat v2.0 — Plugin Architecture
+### AlloChat — Plugin Architecture
 
 ```typescript
 plugins: defineTable({
@@ -829,7 +829,7 @@ roomPlugins: defineTable({
 - OpenAI image moderation (v9.0)
 - Admin console with logs
 
-### AlloChat v2.0 — Enhanced
+### AlloChat — Enhanced
 
 ```typescript
 moderationActions: defineTable({
@@ -905,7 +905,7 @@ contentFilters: defineTable({
 - Call cost (deduct from wallet per call)
 - Currency purchases (no built-in Stripe — basic)
 
-### AlloChat v2.0 — Full Monetization Stack
+### AlloChat — Full Monetization Stack
 
 ```typescript
 wallets: defineTable({
@@ -976,7 +976,7 @@ giftTransactions: defineTable({
 - Email notifications via PHPMailer/SMTP
 - Browser notification bell (polling-based count)
 
-### AlloChat v2.0 — Enhanced
+### AlloChat — Enhanced
 
 ```typescript
 notifications: defineTable({
@@ -1017,7 +1017,7 @@ notifications: defineTable({
 - Rank management
 - Radio stream management
 
-### AlloChat v2.0 — Enhanced Admin
+### AlloChat — Enhanced Admin
 
 ```
 app/(app)/admin/
@@ -1071,7 +1071,7 @@ getAuditLogs(filters, pagination)
 | Frontend | jQuery + vanilla CSS |
 | Deployment | Shared hosting / VPS |
 
-### AlloChat v2.0 — Stack
+### AlloChat — Stack
 | Layer | Technology | Why |
 |-------|-----------|-----|
 | Frontend | Next.js 15 (App Router) + React 19 | SSR, streaming, RSC |
@@ -1158,7 +1158,7 @@ events: defineTable({
 
 ## 16. Feature Comparison Matrix
 
-| Feature / System | CodyChat 9.0 | AlloChat v2.0 | Improvement |
+| Feature / System | CodyChat 9.0 | AlloChat | Improvement |
 |-----------------|-------------|---------------|-------------|
 | Real-time transport | AJAX polling (3s) | WebSocket (<100ms) | 30x faster |
 | Auth methods | Email only | 7+ methods (OAuth, OTP, magic link) | Secure + flexible |
@@ -1183,4 +1183,4 @@ events: defineTable({
 
 ---
 
-*Last Updated: March 19, 2026 | AlloChat v2.0 | Stack: Next.js + Shadcn + Convex + Convex Auth*
+*Last Updated: March 19, 2026 | AlloChat | Stack: Next.js + Shadcn + Convex + Convex Auth*

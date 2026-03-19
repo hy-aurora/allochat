@@ -1,4 +1,4 @@
-# AlloChat v2.0 — Master Task Checklist
+# AlloChat — Master Task Checklist
 
 ## Phase 0 — Planning & Architecture ✅
 - [x] Analyze CodyChat 9.0 legacy codebase

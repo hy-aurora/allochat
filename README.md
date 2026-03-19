@@ -1,10 +1,10 @@
-# AlloChat v2.0 — Premium Global Chat & Calling Platform
+# AlloChat — Premium Global Chat & Calling Platform
 
 > **A modern, lightning-fast, fully SaaS real-time chat and calling platform** built with cutting-edge web technologies for a superior user experience.
 
 ---
 
-## 🚀 What is AlloChat v2.0?
+## 🚀 What is AlloChat?
 
 AlloChat is a next-generation **global real-time chat and calling platform** designed as a complete SaaS solution. It is built from the ground up with a modern architecture that prioritizes:
 
@@ -379,7 +379,7 @@ AlloChat is designed to be **Open Source friendly** without compromising product
 
 ## 📄 License
 
-AlloChat v2.0 is licensed under the **MIT License**. See [LICENSE.md](LICENSE.md) for details.
+AlloChat is licensed under the **MIT License**. See [LICENSE.md](LICENSE.md) for details.
 
 ---
 

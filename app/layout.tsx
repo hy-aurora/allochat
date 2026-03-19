@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     template: '%s | AlloChat',
   },
   description:
-    'AlloChat v2.0 — A modern, real-time global chat and calling platform. Connect with friends, join rooms, and chat in HD.',
+    'AlloChat — A modern, real-time global chat and calling platform. Connect with friends, join rooms, and chat in HD.',
   keywords: ['chat', 'calling', 'rooms', 'real-time', 'video', 'voice'],
   authors: [{ name: 'AlloChat Team' }],
   openGraph: {

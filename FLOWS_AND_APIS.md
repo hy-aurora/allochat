@@ -1,4 +1,4 @@
-# AlloChat v2.0 — Flows, Algorithms & API Layouts
+# AlloChat — Flows, Algorithms & API Layouts
 
 > Complete technical specification for all user flows, Convex APIs, data flows, page routing, and algorithms.
 
@@ -1275,4 +1275,4 @@ getAvatarUrl(publicId) → `https://res.cloudinary.com/${cloud}/image/upload/w_8
 
 ---
 
-*Last Updated: March 19, 2026 | AlloChat v2.0 | Stack: Next.js + Shadcn + Convex + Convex Auth*
+*Last Updated: March 19, 2026 | AlloChat | Stack: Next.js + Shadcn + Convex + Convex Auth*

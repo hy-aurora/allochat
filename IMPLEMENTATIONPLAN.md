@@ -1,8 +1,8 @@
-# AlloChat v2.0 — Full Implementation Plan
+# AlloChat — Full Implementation Plan
 
 ## Background
 
-AlloChat v2.0 is a complete, modern rebuild of **CodyChat 9.0** (legacy PHP + MySQL platform) as a **SaaS global chat and calling platform**. The tech stack is **Next.js 15** (App Router) + **Shadcn UI** + **Convex** (real-time backend) + **Convex Auth**.
+AlloChat is a complete, modern rebuild of **CodyChat 9.0** (legacy PHP + MySQL platform) as a **SaaS global chat and calling platform**. The tech stack is **Next.js 15** (App Router) + **Shadcn UI** + **Convex** (real-time backend) + **Convex Auth**.
 
 **Key design principles:**
 - Real-time-first: Convex subscriptions power all live features (messaging, presence, calls)
