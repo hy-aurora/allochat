@@ -16,7 +16,16 @@ const isAuthPage = createRouteMatcher([
 ]);
 
 const isAdminPage = createRouteMatcher(['/admin(.*)']);
-const isPublicPage = createRouteMatcher(['/', '/about', '/privacy', '/terms']);
+const isPublicPage = createRouteMatcher([
+  '/',
+  '/about',
+  '/privacy',
+  '/terms',
+  '/cookies',
+  '/refund',
+  '/community-rules',
+  '/contact',
+]);
 
 export default convexAuthNextjsMiddleware(async (request, ctx) => {
   const authenticated = await isAuthenticatedNextjs();
