@@ -6,15 +6,39 @@
 
 ## 🚀 What is AlloChat v2.0?
 
-AlloChat is a next-generation **global real-time chat and calling platform** designed as a complete SaaS solution. It replaces the legacy CodyChat 9.0 with a modern architecture that prioritizes:
+AlloChat is a next-generation **global real-time chat and calling platform** designed as a complete SaaS solution. It is built from the ground up with a modern architecture that prioritizes:
 
-- ⚡ **Speed**: Convex real-time subscriptions + Edge CDN
-- 🎨 **Beautiful UI**: Shadcn components + Tailwind CSS
-- 🔒 **Security**: Modern auth, encryption, audit logs
-- 📈 **Scalability**: Global deployment, auto-scaling
-- 💰 **Monetization**: Subscriptions, in-app purchases, affiliate system
-- 🎮 **Engagement**: Gamification, achievements, leaderboards
-- 🛡️ **Trust**: Moderation, content filters, appeals system
+- ⚡ **Speed**: Convex real-time subscriptions + Edge CDN.
+- 🎨 **Beautiful UI**: Shadcn components + Tailwind CSS (premium aesthetics).
+- 🔒 **Security**: Enterprise-grade auth, encrypted state, and server-side logic protection.
+- 📈 **Scalability**: Global deployment with zero-config auto-scaling.
+- 💰 **Monetization**: Full SaaS suite with subscriptions, gifts, and credits.
+- 🎮 **Engagement**: Advanced gamification, levels, and real-time leaderboards.
+- 🛡️ **Trust**: AI-assisted moderation and robust reporting systems.
+
+---
+
+## 🔐 Security Architecture & Protection (Open Source Safety)
+
+AlloChat is designed to be **Open Source friendly** without compromising production security. Even if the entire codebase is public, the platform remains secure through several layers of protection:
+
+### 1. Zero-Secret Repository
+- **Environment Isolation**: All sensitive API keys (Stripe, LiveKit, Cloudinary, Twilio) are stored in `.env.local` and are **never** committed to Git.
+- **Example Template**: A `.env.example` is provided for developers to see required fields without exposing actual values.
+- **GitGuard**: Pre-commit hooks prevent accidental leakage of sensitive strings or keys.
+
+### 2. Protected Convex Backend
+- **Server-Side Logic**: All critical business logic (payments, moderation, message broadcasting) lives in the **Convex Backend**, not the client.
+- **Auth Guarding**: Every single mutation and query is protected by `ctx.auth` checks. Users cannot "backtrack" or "crack" APIs because the backend validates every session token against the private Auth provider.
+- **Immutable Schemas**: Database rules are enforced at the schema level in `convex/schema.ts`, preventing unauthorized data manipulation even if a user attempts to call the API directly.
+
+### 3. API Key & Endpoint Security
+- **Scoped Permissions**: API keys generated for integrations have strictly scoped permissions (RBAC).
+- **CORS & Origin Locking**: Production deployments are locked to specific domains, preventing third-party sites from "parasite-calling" your Convex instances.
+- **No Direct DB Access**: There is no "SQL Connection String" exposed. All data access goes through signed, authenticated Convex functions.
+
+### 4. Code Obfuscation
+- **Production Minification**: Next.js automatically minifies and obfuscates client-side bundles during build, making reverse engineering of the UI logic extremely difficult for malicious actors.
 
 ---
 
@@ -115,7 +139,7 @@ AlloChat is a next-generation **global real-time chat and calling platform** des
 
 | Component | Technology | Why? |
 |-----------|-----------|------|
-| **Frontend** | Next.js 16 (App Router) | Server components, streaming, optimal DX |
+| **Frontend** | Next.js 15 (App Router) | Server components, streaming, optimal DX |
 | **UI Framework** | Shadcn UI | Accessible, customizable, Tailwind-based |
 | **Backend** | Convex | Real-time subscriptions, instant sync, no DevOps |
 | **Authentication** | Convex Auth | Built-in, secure, multi-provider support |
@@ -123,7 +147,7 @@ AlloChat is a next-generation **global real-time chat and calling platform** des
 | **WebRTC** | LiveKit | Enterprise calling, recording, transcription |
 | **Media Hosting** | Cloudinary | CDN delivery, on-the-fly transforms |
 | **Payments** | Stripe | Global payment processing, webhooks |
-| **Email/SMS** | Sendgrid + Twilio | Reliable notifications, OTP delivery |
+| **Email/SMS** | Resend + Twilio | Reliable notifications, OTP delivery |
 | **Search** | Convex full-text | Fast indexing of messages/rooms |
 | **Deployment** | Vercel (frontend) + Convex (backend) | Global edge, zero-config scaling |
 
@@ -280,18 +304,6 @@ AlloChat is a next-generation **global real-time chat and calling platform** des
 - **Sales Teams** (customer video conferencing)
 - **Education** (classroom chat, office hours)
 - **Healthcare** (HIPAA-compliant telemedicine)
-
----
-
-## 🛠️ Migration from CodyChat 9.0
-
-For existing CodyChat users, we provide:
-
-1. **Data Migration Tool** (automatic user/message export)
-2. **Avatar Import** (preserve existing avatars)
-3. **Room Structure** (migrate room hierarchy)
-4. **Permission Mapping** (map old roles to new RBAC)
-5. **Staged Rollout** (run both systems in parallel)
 
 ---
 
