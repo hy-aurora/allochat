@@ -15,6 +15,7 @@ import {
   testimonials,
   faqs,
 } from "@/app/data/home";
+import { HeroChatMockup } from "@/components/hero-chat-mockup";
 
 // ─── Animation helpers ──────────────────────────────────────────────────────
 
@@ -144,20 +145,8 @@ export default function Page() {
               </Link>
             </motion.div>
 
-            {/* Stats */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.52 }}
-              className="mt-4 grid grid-cols-2 gap-x-12 gap-y-4 sm:grid-cols-4"
-            >
-              {hero.stats.map((stat) => (
-                <div key={stat.label} className="text-center">
-                  <p className="text-3xl font-extrabold text-foreground tracking-tight">{stat.value}</p>
-                  <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide mt-0.5">{stat.label}</p>
-                </div>
-              ))}
-            </motion.div>
+            {/* Chat UI Mockup */}
+            <HeroChatMockup />
           </div>
         </div>
       </section>

@@ -1,7 +1,6 @@
 import { convexAuth } from '@convex-dev/auth/server';
 import { Password } from '@convex-dev/auth/providers/Password';
 import Google from '@auth/core/providers/google';
-import GitHub from '@auth/core/providers/github';
 import { Email } from '@convex-dev/auth/providers/Email';
 
 const providers = [
@@ -19,14 +18,6 @@ const providers = [
       Google({
         clientId: process.env.AUTH_GOOGLE_ID,
         clientSecret: process.env.AUTH_GOOGLE_SECRET,
-      }),
-    ]
-    : []),
-  ...(process.env.AUTH_GITHUB_ID && process.env.AUTH_GITHUB_SECRET
-    ? [
-      GitHub({
-        clientId: process.env.AUTH_GITHUB_ID,
-        clientSecret: process.env.AUTH_GITHUB_SECRET,
       }),
     ]
     : []),

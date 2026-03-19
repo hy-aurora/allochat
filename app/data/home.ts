@@ -24,18 +24,18 @@ export const nav = {
 };
 
 export const hero = {
-  badge: "🔥 10,000+ Active Users Right Now",
-  heading: ["Real-time chat,", "rooms, and calls", "in one place."],
+  badge: "10,000+ people chatting right now",
+  heading: ["Chat. Call. Connect.", "Find your people,", "wherever they are."],
   subheading:
-    "Build communities, make friends, and have meaningful conversations. AlloChat is your modern, safe home for instant messaging, voice and video calls — powered by Next.js & Convex.",
-  primaryCta: { label: "Get Started — It's Free", href: "/sign-up" },
+    "AlloChat is your home for real conversations. Jump into rooms built around things you love, hop on a live call, and build friendships that actually last.",
+  primaryCta: { label: "Start Chatting — It's Free", href: "/sign-up" },
   secondaryCta: { label: "Sign In", href: "/sign-in" },
-  ghostCta: { label: "View All Rooms →", href: "/lobby" },
+  ghostCta: { label: "Explore Rooms →", href: "/lobby" },
   stats: [
     { value: "10K+", label: "Active Users" },
     { value: "500+", label: "Chat Rooms" },
-    { value: "99.9%", label: "Uptime" },
     { value: "150+", label: "Countries" },
+    { value: "24/7", label: "Always Online" },
   ],
 };
 
